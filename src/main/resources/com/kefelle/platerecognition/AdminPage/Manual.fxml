@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="960.0" prefWidth="1720.0" stylesheets="@../assets/styles/menu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kefelle.platerecognition.MenuController">
     <children>
         <AnchorPane layoutX="-2.0" layoutY="-3.0" prefHeight="960.0" prefWidth="405.0" style="-fx-background-color: rgba(217, 217, 217, 1);">
@@ -19,38 +20,45 @@
                         <Image url="@../assets/images/crs.png" />
                     </image>
                 </ImageView>
-                <Text layoutX="74.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="link" text="Home" onMouseClicked="#changeToHome">
+                <Text layoutX="74.0" layoutY="200.0" onMouseClicked="#changeToHome" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="link" text="Home">
                     <font>
                         <Font size="30.0" />
                     </font>
                 </Text>
-                <Text layoutX="74.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="link" text="Admin Profile" onMouseClicked="#changeToProfile">
+                <Text layoutX="74.0" layoutY="325.0" onMouseClicked="#changeToProfile" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="link" text="Admin Profile">
                     <font>
                         <Font size="30.0" />
                     </font>
                 </Text>
-                <Text layoutX="74.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="link" text="Lists" onMouseClicked="#changeToLists">
+                <Text layoutX="74.0" layoutY="450.0" onMouseClicked="#changeToLists" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="link" text="Lists">
                     <font>
                         <Font size="30.0" />
                     </font>
                 </Text>
-                <Text layoutX="74.0" layoutY="575.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="link" text="Statistics" onMouseClicked="#changeToStatistics">
+                <Text layoutX="74.0" layoutY="575.0" onMouseClicked="#changeToStatistics" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="link" text="Statistics">
                     <font>
                         <Font size="30.0" />
                     </font>
                 </Text>
-                <Text layoutX="74.0" layoutY="700.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="link" text="User Manual" style="-fx-fill: rgba(217, 217, 217, 1);" onMouseClicked="#changeToManual">
+                <Text layoutX="74.0" layoutY="700.0" onMouseClicked="#changeToManual" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: rgba(217, 217, 217, 1);" styleClass="link" text="User Manual">
                     <font>
                         <Font size="30.0" />
                     </font>
                 </Text>
-                <Text layoutX="74.0" layoutY="825.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="link" text="Contact" onMouseClicked="#changeToContact">
+                <Text layoutX="74.0" layoutY="825.0" onMouseClicked="#changeToContact" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="link" text="Contact">
                     <font>
                         <Font size="30.0" />
                     </font>
                 </Text>
             </children>
         </AnchorPane>
-        <AnchorPane layoutX="400.0" prefHeight="960.0" prefWidth="1320.0" style="-fx-background-color: rgba(42, 42, 42, 1);" />
+        <AnchorPane layoutX="400.0" prefHeight="960.0" prefWidth="1320.0" style="-fx-background-color: rgba(42, 42, 42, 1);">
+         <children>
+            <ScrollPane fx:id="scrollPaneManual" layoutX="78.0" layoutY="81.0" prefHeight="804.0" prefWidth="1132.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+              </content>
+            </ScrollPane>
+         </children></AnchorPane>
     </children>
 </AnchorPane>

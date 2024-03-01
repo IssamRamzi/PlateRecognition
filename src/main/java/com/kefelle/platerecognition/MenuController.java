@@ -33,6 +33,11 @@ public class MenuController {
     @FXML
     VBox vBox = new VBox();
 
+    @FXML
+    public ScrollPane scrollPaneManual = new ScrollPane();
+    @FXML
+    VBox vBoxManual = new VBox();
+
     /*
         todo : switch scenes
     */
@@ -75,6 +80,9 @@ public class MenuController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        this.clearVBox();
+        this.generateManual();
+        System.out.println("Manual");
     }
     @FXML
     public void changeToContact(MouseEvent event) throws IOException {
@@ -177,5 +185,14 @@ public class MenuController {
         s.setScene(scene);
         s.show();
     }
-    
+    /*
+        todo : Manual
+    */
+
+    public void generateManual() {
+        Text text = new Text("This is the manual");
+        text.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-fill: green;");
+        vBoxManual.getChildren().add(text);
+        scrollPaneManual.setContent(vBoxManual);
+    }
 }

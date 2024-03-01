@@ -42,5 +42,4 @@ CREATE TABLE UserEntry (
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (licence_number) REFERENCES plate(licence_number)
 );
-drop table UserEntry;
 

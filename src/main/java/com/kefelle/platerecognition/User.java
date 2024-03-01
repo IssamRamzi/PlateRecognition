@@ -75,6 +75,7 @@ public class User {
             System.out.println(u);
         }
     }
+
     public static void getUsers() throws SQLException {
         usersList = new ArrayList<>();
         Statement statement = connection.createStatement();
@@ -92,6 +93,7 @@ public class User {
             usersList.add(user);
         }
     }
+
     public static boolean isUser(String username) throws SQLException {
         Statement statement = connection.createStatement();
         statement.execute("use crs");
@@ -103,6 +105,7 @@ public class User {
             }
         }
     }
+
     public static User getUser(String username) throws SQLException {
         PreparedStatement statement = connection.prepareStatement("SELECT * FROM users where username = ?");
         statement.setString(1, username);
@@ -119,6 +122,7 @@ public class User {
         System.err.println("User not found");
         return null;
     }
+
     public static void addUser(User user) throws SQLException {
         // ! Gerer l'ui en affichant que l'utilisateur existe deja
         Statement s = connection.createStatement();
@@ -135,8 +139,8 @@ public class User {
             System.err.println("User "+ user.getUsername() +" already Exists");
             System.out.println(e.getMessage());
         }
-
     }
+
     public static void deleteUser(String username) {
         // ! Gerer l'ui en affichant que l'utilisateur n'existe pas
         try{
@@ -174,8 +178,13 @@ public class User {
             System.out.println(e.getMessage());
         }
     }
+
 }
 
 //how can i create a new branch
 //git checkout -b branchname
 //git add .
+
+//git commit -m "message"
+//git push origin branchname
+
