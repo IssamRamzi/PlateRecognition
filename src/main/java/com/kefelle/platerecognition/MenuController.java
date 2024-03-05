@@ -27,14 +27,13 @@ public class MenuController {
     private Scene scene;
     private Parent root;
     @FXML
-    TextField searchField = new TextField();
+    private TextField searchField = new TextField();
     @FXML
     public ScrollPane scrollPane;
     @FXML
-    VBox vBox = new VBox();
-
-    public ScrollPane scrollPaneManual = new ScrollPane();
-    VBox vBoxManual = new VBox();
+    private VBox vBox = new VBox();
+    private ScrollPane scrollPaneManual = new ScrollPane();
+    private VBox vBoxManual = new VBox();
 
     /*
         todo : switch scenes

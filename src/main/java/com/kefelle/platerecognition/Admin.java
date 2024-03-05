@@ -2,7 +2,6 @@ package com.kefelle.platerecognition;
 
 
 import com.kefelle.platerecognition.Database.Connect;
-
 import java.sql.*;
 
 public class Admin {

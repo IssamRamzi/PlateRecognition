@@ -11,16 +11,16 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class Main extends Application {
-    static Connect connect = new Connect();
+    private static Connect connect = new Connect();
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("AdminPage/Lists.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("login/Login.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Plate Recognition System");
         stage.setScene(scene);
         stage.show();
     }
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args){
         Thread thread = new Thread(connect);
         thread.start();
         launch();

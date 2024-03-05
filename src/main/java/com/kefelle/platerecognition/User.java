@@ -107,6 +107,8 @@ public class User {
     }
 
     public static User getUser(String username) throws SQLException {
+        Statement s = connection.createStatement();
+        s.execute("use crs");
         PreparedStatement statement = connection.prepareStatement("SELECT * FROM users where username = ?");
         statement.setString(1, username);
         ResultSet resultSet = statement.executeQuery();
