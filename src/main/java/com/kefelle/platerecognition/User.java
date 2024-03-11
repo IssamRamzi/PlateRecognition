@@ -5,6 +5,7 @@ import com.kefelle.platerecognition.Database.Connect;
 import java.sql.*;
 import java.util.ArrayList;
 
+
 public class User {
     private static Connection connection = Connect.connect();
     public static ArrayList<User> usersList = new ArrayList<>();
@@ -95,13 +96,17 @@ public class User {
     }
 
     public static boolean isUser(String username) throws SQLException {
-        Statement statement = connection.createStatement();
-        statement.execute("use crs");
         String query = "SELECT * FROM users WHERE USERNAME = ?";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            Statement statement = connection.createStatement();
+            statement.execute("use crs");
             stmt.setString(1, username);
             try (ResultSet rs = stmt.executeQuery()) {
                 return rs.next();
+            }
+            catch (SQLException e){
+                System.out.println(e.getMessage());
+                return false;
             }
         }
     }
@@ -118,10 +123,10 @@ public class User {
             String lname = resultSet.getString("lname");
             String user = resultSet.getString("USERNAME");
             String pwd = resultSet.getString("Password");
-            User user1 = new User(fname,lname,user,pwd, ID);
+            String email = resultSet.getString("Email");
+            User user1 = new User(fname,lname,user,pwd,email, ID);
             return user1;
         }
-        System.err.println("User not found");
         return null;
     }
 
@@ -156,11 +161,13 @@ public class User {
             PreparedStatement statement = connection.prepareStatement("DELETE FROM users WHERE USERNAME = ?");
             statement.setString(1, username);
             statement.executeUpdate();
-        }catch (Exception e){
+        }catch (SQLException e){
             System.out.println(e.getMessage());
         }
+        System.out.println("User deleted");
+
     }
-    public static void updateUser(User user) throws SQLException {
+    public static void updateUser(User user) {
         try {
             Statement s = connection.createStatement();
             s.execute("use crs");
@@ -176,7 +183,7 @@ public class User {
             statement.setString(4, user.getEmail());
             statement.setString(5, user.getUsername());
             statement.executeUpdate();
-        }catch (Exception e){
+        }catch (SQLException e){
             System.out.println(e.getMessage());
         }
     }

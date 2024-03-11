@@ -23,3 +23,21 @@
     -fx-background-radius: 5;
 
 }
+.buttons {
+    -fx-background-color:  #AC87C5;
+    -fx-pref-width: 150px;
+    -fx-pref-height: 50px;
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-text-fill: #ffe5e5;
+}
+.linkto{
+    -fx-background-color: #27ad32;
+    -fx-pref-width: 100px;
+    -fx-pref-height: 50px;
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-text-fill: #ffe5e5;
+}

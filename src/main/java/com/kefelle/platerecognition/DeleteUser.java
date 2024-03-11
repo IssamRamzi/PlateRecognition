@@ -6,12 +6,22 @@ import javafx.scene.input.MouseEvent;
 
 import java.sql.SQLException;
 
-public class DeleteUser {
+public class DeleteUser implements Closable {
     @FXML
     private TextField username;
 
     public void deleteUser(MouseEvent event) throws SQLException {
         String us = username.getText();
         User.deleteUser(us);
+        username.setText("");
+    }
+    public void deleteUserClose(MouseEvent event) throws SQLException {
+        String us = username.getText();
+        User.deleteUser(us);
+        this.closeWindow(event);
+
+    }
+    public void close(MouseEvent event) {
+        this.closeWindow(event);
     }
 }

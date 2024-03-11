@@ -1,4 +1,4 @@
-package com.kefelle.platerecognition.Database;
+package com.kefelle.platerecognition;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;

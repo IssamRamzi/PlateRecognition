@@ -19,7 +19,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Objects;
 
-public class MenuController {
+public class MenuController implements Closable{
     /*
         todo : attributs
     */
@@ -28,6 +28,9 @@ public class MenuController {
     private Parent root;
     @FXML
     private TextField searchField = new TextField();
+    @FXML
+    private TextField platesearch = new TextField();
+
     @FXML
     public ScrollPane scrollPane;
     @FXML
@@ -89,10 +92,64 @@ public class MenuController {
         stage.show();
     }
 
-    /*
-        todo : Lists
 
-        * : fix displayUsers method to display the users that are new in the VBox and also clear the VBox before when redisplaying the users
+
+    @FXML
+    public void changeToUsers(MouseEvent event) throws SQLException {
+        try{
+            root = FXMLLoader.load(getClass().getResource("dashboard/users.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        displayUsers(event);
+    }
+    @FXML
+    public void changeToPlates(MouseEvent event) {
+        try{
+            root = FXMLLoader.load(getClass().getResource("dashboard/plates.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    @FXML
+    public void changeToManuel(MouseEvent event){
+        try{
+            root = FXMLLoader.load(getClass().getResource("dashboard/manuel.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+    }
+    @FXML
+    public void changeToStats(MouseEvent event) throws IOException {
+        try{
+            root = FXMLLoader.load(getClass().getResource("dashboard/statistics.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void close(MouseEvent event) {
+        this.closeWindow(event);
+    }
+    /*
+        todo : Lists - Users
+
     */
 
     public void displayUsers(MouseEvent event) throws SQLException {
@@ -101,8 +158,10 @@ public class MenuController {
         scrollPane.setContent(null);
         var list = User.getUsersList();
         for (User user : list) {
-            Text userText = new Text(user.toString());
+            String s = "%-5d\t %-30s %-30s %-30s %-40s %-40s";
+            Text userText = new Text(String.format(s, user.getID(), user.getFname(), user.getLname(), user.getUsername(), user.getUserPassword(), user.getEmail()));
             vBox.getChildren().add(userText);
+
         }
         scrollPane.setContent(vBox);
         scrollPane.setPannable(true);
@@ -181,6 +240,26 @@ public class MenuController {
         s.setScene(scene);
         s.show();
     }
+
+    /*
+        todo : Plates
+
+    */
+
+    public void displayPlates(MouseEvent event){
+        clearVBox();
+        scrollPane.setContent(null);
+        var list = Plate.getPlatesList();
+        for (Plate plate : list) {
+            String s = "%-5d\t %-30s";
+            Text plateText = new Text(String.format(s, plate.getUser_ID(), plate.getPlateNumber()));
+            vBox.getChildren().add(plateText);
+        }
+        scrollPane.setContent(vBox);
+        scrollPane.setPannable(true);
+    }
+
+
     /*
         todo : Manual
     */
@@ -259,6 +338,5 @@ public class MenuController {
 
         scrollPaneManual.setContent(vBoxManual);
     }
-
 
 }
